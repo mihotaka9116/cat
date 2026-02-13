@@ -1,0 +1,222 @@
+/* --- 1. 全体のベース --- */
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #4a4a4a;
+  background-color: #fdfaf6;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+.wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- 2. ヘッダー・ロゴ --- */
+#header {
+  text-align: center;
+  padding: 60px 0 40px;
+}
+
+.site-title a {
+  font-family: 'Sacramento', cursive;
+  font-size: 64px;
+  color: #a67c7c;
+  text-decoration: none;
+}
+
+.sub-title {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  color: #999;
+  margin-top: -10px;
+  text-transform: uppercase;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+nav a {
+  color: #666;
+  font-size: 14px;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+/* メニューの下線アニメーション */
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #a67c7c;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ナビゲーション全体のリスト設定 */
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  padding: 0;           /* 余計な余白を消す */
+  list-style: none;     /* ←これで「・」が消えます！ */
+}
+
+/* ナビのリスト項目（念のためここでも点を消す設定） */
+nav li {
+  list-style-type: none; /* ←ここでも「・」を確実に消します */
+}
+
+/* ナビの文字サイズと装飾 */
+nav a {
+  color: #666;
+  font-size: 18px;      /* ←14pxから18pxに大きくしました */
+  font-weight: 500;     /* 少しだけ太くして読みやすく */
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+/* --- 3. メインビジュアル --- */
+#mainvisual {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-bottom: 80px;
+}
+
+#mainvisual img {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- 4. Aboutセクション --- */
+#about {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-info {
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* --- 5. Works・見出し --- */
+.sec-title {
+  font-family: 'Sacramento', cursive;
+  font-size: 44px;
+  text-align: center;
+  color: #a67c7c;
+  margin: 100px 0 40px;
+  width: 100%;
+}
+
+#works ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+#works li {
+  width: 31%;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+#works li:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(166, 124, 124, 0.15);
+}
+
+#works li img {
+  width: 100%;
+  transition: transform 0.4s, filter 0.5s ease;
+  vertical-align: bottom;
+  filter: saturate(0.8);
+}
+
+#works li:hover img {
+  transform: scale(1.05);
+  filter: saturate(1.2);
+}
+
+/* --- 6. Newsセクション --- */
+#news dl {
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid #e0d5d5;
+  padding-top: 20px;
+}
+
+#news dt {
+  width: 20%;
+  color: #a67c7c;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#news dd {
+  width: 80%;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+/* --- 7. Footer --- */
+#footer {
+  text-align: center;
+  padding: 60px 0 40px;
+  font-size: 12px;
+  color: #b0b0b0;
+  letter-spacing: 0.1em;
+}
+
+/* --- 8. スマホ対応 --- */
+@media (max-width: 767px) {
+  .site-title a { font-size: 48px; }
+  #about { text-align: center; }
+  #works li { width: 48%; }
+  #news dt, #news dd { width: 100%; }
+  #news dd { padding-left: 0; }
+}
+
+/* --- 9. 重要：浮かび上がるアニメーションの設定 --- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.fade-up.is-show {
+  opacity: 1;
+  transform: translateY(0);
+}
