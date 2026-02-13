@@ -225,3 +225,33 @@ nav a {
   transform: translateY(0) !important;
   pointer-events: auto;
 }
+
+/* Worksセクションのリスト整列 */
+#works ul {
+  display: grid;
+  /* 横に3列並べる設定（画面幅に合わせて自動調整） */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px; /* 画像同士の隙間 */
+  list-style: none;
+  padding: 0;
+}
+
+#works ul li {
+  width: 100%;
+}
+
+#works ul li img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* 正方形に統一（4/3などお好みで変更可） */
+  object-fit: cover;   /* 枠いっぱいにトリミングして表示 */
+  border-radius: 8px;  /* 角を少し丸くすると柔らかい印象になります */
+  background-color: #f9f9f9; /* 背景色を入れると余白がある画像も綺麗に見えます */
+}
+
+/* スマホ表示では2列にする場合 */
+@media (max-width: 600px) {
+  #works ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
