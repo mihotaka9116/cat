@@ -260,7 +260,7 @@ nav a {
   width: 100%;
   aspect-ratio: 1 / 1;    /* 正方形の枠を維持 */
   object-fit: contain;    /* 画像全体が収まるように調整（ここが重要！） */
-  padding: 20px;          /* 画像の周りに少し余白を作って「引いた」感じにする */
+  padding: 40px;          /* 画像の周りに少し余白を作って「引いた」感じにする */
   box-sizing: border-box; /* パディングを含めたサイズ計算にする */
   border-radius: 8px;
   background-color: #ffffff; /* 背景を白にすると、どんなロゴも綺麗に馴染みます */
