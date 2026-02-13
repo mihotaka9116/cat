@@ -209,14 +209,19 @@ nav a {
   #news dd { padding-left: 0; }
 }
 
-/* --- 9. 重要：浮かび上がるアニメーションの設定 --- */
+/* --- 9. アニメーション設定 --- */
 .fade-up {
   opacity: 0;
   transform: translateY(40px);
+  /* transitionのスペルミスや設定ミスがないかチェック */
   transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+  /* 念のため要素が消えないように visibility を管理 */
+  pointer-events: none; 
 }
 
+/* 表示された時 */
 .fade-up.is-show {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  pointer-events: auto;
 }
