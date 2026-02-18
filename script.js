@@ -21,3 +21,16 @@ window.onload = function () {
   const spinner = document.getElementById("loading");
   spinner.classList.add("loaded");
 };
+
+window.onload = function () {
+  const spinner = document.getElementById("loading");
+  spinner.classList.add("loaded");
+};
+
+// 【追加】もし読み込みが遅くても5秒後には強制的に表示させる（保険）
+setTimeout(function(){
+  const spinner = document.getElementById("loading");
+  if(!spinner.classList.contains("loaded")){
+    spinner.classList.add("loaded");
+  }
+}, 5000);
