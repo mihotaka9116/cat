@@ -267,141 +267,45 @@ nav a {
   transition: transform 0.4s, filter 0.5s ease;
 }
 
-/* ローディング画面 */
+/* --- 10. ローディング画面（決定版） --- */
 #loading {
   width: 100vw;
   height: 100vh;
-  transition: all 1s;
-  background-color: #0bd;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: #fdfaf6; /* サイトと同じ薄いベージュ */
+  display: flex;             /* 中の丸を中央に寄せる */
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+  opacity: 1;
+  visibility: visible;
 }
+
+/* 読み込み完了後にJSで付与されるクラス */
+.loaded {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* 中央で動く丸 */
 .spinner {
   width: 100px;
   height: 100px;
-  margin: 200px auto;
-  background-color: #fff;
+  background-color: #a67c7c; /* ロゴと同じくすみピンク */
   border-radius: 100%;
-  animation: sk-scaleout 1s infinite ease-in-out;
+  animation: sk-scaleout 1.2s infinite ease-in-out;
 }
-/* ローディングアニメーション */
+
+/* 波打つようなアニメーション */
 @keyframes sk-scaleout {
   0% {
     transform: scale(0);
   }
   100% {
-    transform: scale(1);
+    transform: scale(1.0);
     opacity: 0;
   }
-}
-
-/* コンテンツ部分の装飾 */
-.gallery {
-  display: grid;
-  gap: 0.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-#loading {
-  width: 100vw;
-  height: 100vh;
-  transition: all 1s;
-  background-color: #0bd;
-
-  /* 以下のコードを追加 */
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-}
-
-.loaded {
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* 水色の画面の基本設定 */
-#loading {
-  width: 100vw;
-  height: 100vh;
-  background-color: #0bd; /* ←この水色ですね */
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  transition: all 1s; /* 消える時のスピード */
-  opacity: 1;
-  visibility: visible;
-}
-
-/* 読み込み終わった後の設定 */
-.loaded {
-  opacity: 0 !important;
-  visibility: hidden !important;
-}
-
-#loading {
-  background-color: #fdfaf6; /* サイトと同じ色にする */
-}
-
-#loading {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  /* 水色からサイトの背景色（薄いベージュ）に変更 */
-  background-color: #fdfaf6; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 1s, visibility 1s;
-}
-
-/* 読み込みが終わったら透明にして、奥のコンテンツを触れるようにする */
-.loaded {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.spinner {
-  width: 100px;
-  height: 100px;
-  /* 丸の色をロゴの色（くすみピンク）に合わせる */
-  background-color: #a67c7c; 
-  border-radius: 100%;
-  animation: sk-scaleout 1s infinite ease-in-out;
-}
-
-/* --- ローディング画面（修正版） --- */
-#loading {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  background-color: #fdfaf6; /* サイトの背景色に合わせる */
-  display: flex;             /* 中央寄せのために追加 */
-  justify-content: center;   /* 左右中央 */
-  align-items: center;       /* 上下中央 */
-  transition: opacity 0.8s ease, visibility 0.8s ease;
-}
-
-.spinner {
-  width: 100px;
-  height: 100px;
-  background-color: #a67c7c; /* 丸の色をロゴの色に合わせる */
-  border-radius: 100%;
-  animation: sk-scaleout 1s infinite ease-in-out;
-}
-
-/* 読み込み完了後に付与されるクラス */
-.loaded {
-  opacity: 0 !important;
-  visibility: hidden !important;
 }
