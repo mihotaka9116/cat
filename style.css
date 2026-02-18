@@ -376,3 +376,32 @@ img {
   border-radius: 100%;
   animation: sk-scaleout 1s infinite ease-in-out;
 }
+
+/* --- ローディング画面（修正版） --- */
+#loading {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: #fdfaf6; /* サイトの背景色に合わせる */
+  display: flex;             /* 中央寄せのために追加 */
+  justify-content: center;   /* 左右中央 */
+  align-items: center;       /* 上下中央 */
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  background-color: #a67c7c; /* 丸の色をロゴの色に合わせる */
+  border-radius: 100%;
+  animation: sk-scaleout 1s infinite ease-in-out;
+}
+
+/* 読み込み完了後に付与されるクラス */
+.loaded {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
