@@ -34,3 +34,17 @@ setTimeout(function(){
     spinner.classList.add("loaded");
   }
 }, 5000);
+
+// 読み込みが完了したら実行
+function stopLoading() {
+  const spinner = document.getElementById("loading");
+  if (spinner) {
+    spinner.classList.add("loaded");
+  }
+}
+
+// 全ての画像などの読み込みが終わったら実行
+window.addEventListener('load', stopLoading);
+
+// 【重要】もし5秒経っても読み込みが終わらなければ強制的に消す（保険）
+setTimeout(stopLoading, 5000);
