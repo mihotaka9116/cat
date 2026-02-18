@@ -322,3 +322,57 @@ img {
   opacity: 0;
   visibility: hidden;
 }
+
+/* 水色の画面の基本設定 */
+#loading {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0bd; /* ←この水色ですね */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  transition: all 1s; /* 消える時のスピード */
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 読み込み終わった後の設定 */
+.loaded {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+#loading {
+  background-color: #fdfaf6; /* サイトと同じ色にする */
+}
+
+#loading {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  /* 水色からサイトの背景色（薄いベージュ）に変更 */
+  background-color: #fdfaf6; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s, visibility 1s;
+}
+
+/* 読み込みが終わったら透明にして、奥のコンテンツを触れるようにする */
+.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  /* 丸の色をロゴの色（くすみピンク）に合わせる */
+  background-color: #a67c7c; 
+  border-radius: 100%;
+  animation: sk-scaleout 1s infinite ease-in-out;
+}
