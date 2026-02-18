@@ -309,3 +309,135 @@ nav a {
     opacity: 0;
   }
 }
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Miho Takahashi - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <header id="header">
+    <h1 class="site-title">
+      <a href="index.html">Miho Takahashi</a>
+      <span class="sub-title">Illustrator & Web Designer</span>
+    </h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#works">Works</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div id="mainvisual" class="fade-up">
+      <img src="blackcat.jpg" alt="Main Visual">
+    </div>
+
+    <section id="about" class="wrapper fade-up">
+      <div style="text-align: center; width: 100%; margin-bottom: 20px;">
+        <h2 class="sec-title">About</h2>
+      </div>
+      <img src="https://picsum.photos/300/300?grayscale" alt="Miho Takahashi" style="width:200px; border-radius:50%; margin: 0 auto; display: block;">
+      
+      <div class="about-text" style="text-align: center; margin-top: 30px;">
+        <ul class="about-info" style="list-style: none; padding: 0;">
+          <li style="font-weight: bold; color: #a67c7c; font-size: 1.2rem;">Miho Takahashi</li>
+          <li>イラストレーター / WEBデザイナー</li>
+          <li>岩手を拠点にカラフルなイラストやロゴを製作しています。</li>
+        </ul>
+        <p style="margin-top: 20px;">
+          ただ美しいだけでなく、心に寄り添うデザインを大切にしています。<br>
+          丁寧なヒアリングを元に、あなたの想いを形にするお手伝いをいたします。
+        </p>
+      </div>
+    </section>
+
+    <section id="works" class="wrapper fade-up">
+      <h2 class="sec-title">Works</h2>
+      <ul>
+        <li><img src="blackcat.jpg" alt="Work 1"></li>
+        <li><img src="blackcat.jpg" alt="Work 2"></li>
+        <li><img src="blackcat.jpg" alt="Work 3"></li>
+      </ul>
+    </section>
+
+    <section id="news" class="wrapper fade-up">
+      <h2 class="sec-title">News</h2>
+      <dl>
+        <dt>2026.02.13</dt>
+        <dd>ポートフォリオサイトをリニューアルしました。</dd>
+        <dt>2025.12.20</dt>
+        <dd>イラスト展示会「くすみカラーの森」に参加しました。</dd>
+        <dt>2025.10.01</dt>
+        <dd>岩手県内のカフェにてロゴデザインを担当しました。</dd>
+      </dl>
+    </section>
+
+    <section id="contact" class="wrapper fade-up" style="text-align: center; margin-bottom: 100px;">
+      <h2 class="sec-title">Contact</h2>
+      <p style="margin-bottom: 10px;">お仕事のご依頼やご相談は、下記ボタンよりご連絡ください。</p>
+      
+      <div style="margin-top: 30px;">
+        <span style="display: inline-block; padding: 15px 40px; background-color: #ccc; color: #fff; text-decoration: none; border-radius: 30px; font-weight: bold; cursor: not-allowed;">
+          現在受付停止中です
+        </span>
+        <p style="font-size: 13px; color: #a67c7c; margin-top: 15px; line-height: 1.6;">
+          ※ポートフォリオ公開準備中のため、現在新規のご依頼・お問い合わせは停止しております。<br>
+          準備が整い次第、受付を再開いたします。
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <div class="footer-links" style="margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; font-size: 12px;">
+      <a href="privacy.html" style="color: #888; text-decoration: none;">プライバシーポリシー</a>
+      <a href="tokusho.html" style="color: #888; text-decoration: none;">特定商取引法に基づく表記</a>
+      <a href="kiyaku.html" style="color: #888; text-decoration: none;">利用規約</a>
+    </div>
+    <p>&copy; 2026 Miho Takahashi All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // 1. スクロールアニメーションの設定
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // 2. ローディング画面を消す設定
+    function stopLoading() {
+      const spinner = document.getElementById("loading");
+      if (spinner && !spinner.classList.contains("loaded")) {
+        spinner.classList.add("loaded");
+      }
+    }
+
+    // ページが完全に読み込まれたら実行
+    window.addEventListener('load', stopLoading);
+
+    // 【保険】読み込みが遅くても5秒後には強制的に消す
+    setTimeout(stopLoading, 5000);
+  </script>
+</body>
+</html>
