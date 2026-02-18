@@ -27,24 +27,28 @@ window.onload = function () {
   spinner.classList.add("loaded");
 };
 
-// 【追加】もし読み込みが遅くても5秒後には強制的に表示させる（保険）
-setTimeout(function(){
-  const spinner = document.getElementById("loading");
-  if(!spinner.classList.contains("loaded")){
-    spinner.classList.add("loaded");
+
+// 1. スクロールアニメーションの設定
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-show');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // 2. ローディング画面を消す設定
+  function stopLoading() {
+    const spinner = document.getElementById("loading");
+    if (spinner) {
+      spinner.classList.add("loaded");
+    }
   }
-}, 5000);
 
-// 読み込みが完了したら実行
-function stopLoading() {
-  const spinner = document.getElementById("loading");
-  if (spinner) {
-    spinner.classList.add("loaded");
-  }
-}
+  // ページが完全に読み込まれたら消す
+  window.addEventListener('load', stopLoading);
 
-// 全ての画像などの読み込みが終わったら実行
-window.addEventListener('load', stopLoading);
-
-// 【重要】もし5秒経っても読み込みが終わらなければ強制的に消す（保険）
-setTimeout(stopLoading, 5000);
+  // 【追加】もし読み込みが遅くても5秒後には強制的に消す（保険）
+  setTimeout(stopLoading, 5000);
