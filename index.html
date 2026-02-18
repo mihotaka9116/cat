@@ -93,16 +93,37 @@
     <p>&copy; 2026 Miho Takahashi All Rights Reserved.</p>
   </footer>
 
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-show');
-        }
-      });
-    }, { threshold: 0.1 });
+// --- 1. スクロールアニメーション（Intersection Observer） ---
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    // 要素が画面内に10%以上入ってきたら
+    if (entry.isIntersecting) {
+      // CSSで動かすための「is-show」クラスを付与
+      entry.target.classList.add('is-show');
+    }
+  });
+}, {
+  threshold: 0.1 // 10%見えたら実行
+});
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  </script>
+// .fade-up クラスがついた要素をすべて監視する
+document.querySelectorAll('.fade-up').forEach((el) => {
+  observer.observe(el);
+});
+
+
+// --- 2. ローディング画面の制御 ---
+function stopLoading() {
+  const spinner = document.getElementById("loading");
+  if (spinner && !spinner.classList.contains("loaded")) {
+    spinner.classList.add("loaded");
+  }
+}
+
+// ページの読み込みが完了したとき
+window.addEventListener('load', stopLoading);
+
+// 【保険】読み込みが遅くても5秒後には強制的に表示させる
+setTimeout(stopLoading, 5000);
 </body>
 </html>
