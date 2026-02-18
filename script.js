@@ -16,3 +16,8 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.fade-up').forEach((el) => {
   observer.observe(el);
 });
+
+window.onload = function () {
+  const spinner = document.getElementById("loading");
+  spinner.classList.add("loaded");
+};
